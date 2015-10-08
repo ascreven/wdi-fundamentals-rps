@@ -23,31 +23,33 @@ function randomPlay() {
 
 function getPlayerMove(move) {
     if (move==null) {
-      return getInput();
+      move=getInput();
     }
-    console.log(move);
-    return getWinner();
+    console.log("Player chose "+move);
+    return move;
 }
-
 
 function getComputerMove(move) {
   if (move==null) {
-    return randomPlay();
+    move=randomPlay();
   }
-    console.log(move);
-    return getWinner();
+    console.log("Computer chose "+move);
+    return move;
 }
 
 function getWinner(playerMove,computerMove) {
     var winner;
-    playerMove=getPlayerMove(playerMove);
-    computerMove=getComputerMove(computerMove);
+    playerMove=getPlayerMove();
+    computerMove=getComputerMove();
     if (playerMove==computerMove) {
       winner='tie';
+      console.log('It is a tie');
     } else if ((playerMove=='rock' && computerMove=='scissors')|| (playerMove=='scissors' && computerMove=='paper') || (playerMove=='paper' && computerMove=='rock')) {
       winner='player';
+      console.log('Player won!');
     } else {
       winner='computer';
+      console.log('Computer won!');
     }
     return winner;
 }
